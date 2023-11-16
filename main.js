@@ -4,11 +4,14 @@ const menuHamIcon = document.querySelector('.menu')
 const mobileMenu = document.querySelector('.mobile-menu')
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart')
 const shoppingCartContainer = document.querySelector('#shoppingCartContainer')
+const productDetail = document.querySelector("#productDetail")
+const botonCerrarProductDetail = document.querySelector(".product-detail-close")
 const cardsContainer = document.querySelector(".cards-container")
 
 menuEmail.addEventListener("click", toggleDesktopMenu)
 menuHamIcon.addEventListener("click", toggleMobileMenu)
-menuCarritoIcon.addEventListener("click", toggleProductDetail)
+menuCarritoIcon.addEventListener("click", toggleCarritotDetail)
+botonCerrarProductDetail.addEventListener("click", CloseProductDetail)
 
 function toggleDesktopMenu(){
     const isAsaidClose = shoppingCartContainer.classList.contains("inactive")
@@ -24,14 +27,29 @@ function toggleMobileMenu(){
         shoppingCartContainer.classList.add("inactive")
     }
     mobileMenu.classList.toggle("inactive")
+
+    CloseProductDetail()
 }
 
-function toggleProductDetail(){
+function toggleCarritotDetail(){
     const isMobileMenuClose = mobileMenu.classList.contains("inactive")
     if (!isMobileMenuClose) {
         mobileMenu.classList.add("inactive")
     } 
+    const isProductDetailClose = productDetail.classList.contains("inactive")
+    if(!isProductDetailClose){
+        productDetail.classList.add("inactive")
+    }
     shoppingCartContainer.classList.toggle("inactive")
+}
+
+function openProducDetail() {
+    shoppingCartContainer.classList.add("inactive")
+    productDetail.classList.remove("inactive")
+}
+
+function CloseProductDetail(){
+    productDetail.classList.add("inactive")
 }
 
 const productList = [];
@@ -50,7 +68,6 @@ productList.push({
     price: 1000,
     image: "https://pronotebooks.com.ar/wp-content/uploads/2023/09/lenovo-3i-1-600x600.webp",
 })
-
 function recorrerArrayDePruductos(arr){
     for (product of arr) {
         const productCard = document.createElement("div");
@@ -58,7 +75,8 @@ function recorrerArrayDePruductos(arr){
         const productImg = document.createElement("img")
         //con .setAtributte le vamos a asignar valor al atributo src, y le vamos a decir que ese valor va a ser la direccion que este en la propiedad imagen de cada iteracion del array
         productImg.setAttribute('src', product.image) //se pone ("atributo", valor)
-      
+        productImg.addEventListener("click", openProducDetail)
+        
         const productInfo = document.createElement("div");
         productInfo.classList.add("product-info")
     
@@ -88,3 +106,4 @@ function recorrerArrayDePruductos(arr){
     }
 }
 recorrerArrayDePruductos(productList)
+
