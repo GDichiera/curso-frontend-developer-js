@@ -306,7 +306,7 @@
 
 
       /* cards containers */
-      .cards-container {
+      .cards-container, .cards-container-clothes {
         margin-top: 20px;
         display: grid;
         grid-template-columns: repeat(auto-fill, 240px);
@@ -316,32 +316,37 @@
       .product-card {
         width: 240px;
       }
-      .product-card img {
+      .product-card img, .cards-container-clothes img {
         width: 240px;
         height: 240px;
         border-radius: 20px;
         object-fit: cover;
       }
-      .cards-container .product-info {
+      .cards-container .product-info, .cards-container-clothes .product-info {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-top: 12px;
       }
-      .cards-container .product-info figure {
+      .cards-container .product-info figure,
+      .cards-container-clothes .product-info figure {
         margin: 0;
       }
-      .cards-container .product-info figure img {
+      .cards-container .product-info figure img,
+      .cards-container-clothes .product-info figure img {
         width: 35px;
         height: 35px;
       }
-      .cards-container .product-info div p:nth-child(1) {
+      .cards-container .product-info div p:nth-child(1),
+      .cards-container-clothes .product-info div p:nth-child(1) 
+      {
         font-weight: bold;
         font-size: var(--md);
         margin-top: 0;
         margin-bottom: 4px;
       }
-      .cards-container .product-info div p:nth-child(2) {
+      .cards-container .product-info div p:nth-child(2),
+      .cards-container-clothes .product-info div p:nth-child(2)  {
         font-size: var(--sm);
         margin-top: 0;
         margin-bottom: 0;
