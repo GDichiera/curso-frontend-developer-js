@@ -7,6 +7,7 @@ const shoppingCartContainer = document.querySelector('#shoppingCartContainer')
 const productDetail = document.querySelector("#productDetail")
 const botonCerrarProductDetail = document.querySelector(".product-detail-close")
 const cardsContainer = document.querySelector(".cards-container")
+const cardsClothes = document.querySelector("cards-container-clothes")
 
 menuEmail.addEventListener("click", toggleDesktopMenu)
 menuHamIcon.addEventListener("click", toggleMobileMenu)
@@ -68,7 +69,7 @@ productList.push({
     price: 1000,
     image: "https://pronotebooks.com.ar/wp-content/uploads/2023/09/lenovo-3i-1-600x600.webp",
 })
-function recorrerArrayDePruductos(arr){
+function recorrerArrayDePruductos(arr,conteiner){
     for (product of arr) {
         const productCard = document.createElement("div");
         productCard.classList.add("product-card")
@@ -102,8 +103,28 @@ function recorrerArrayDePruductos(arr){
         productCard.appendChild(productImg);
         productCard.appendChild(productInfo);
     
-        cardsContainer.appendChild(productCard)
+        conteiner.appendChild(productCard)
     }
 }
-recorrerArrayDePruductos(productList)
+recorrerArrayDePruductos(productList, cardsContainer)
+
+
+const clothesList = [];
+productList.push({
+    name: 'Remera',
+    price: 10,
+    image: "https://http2.mlstatic.com/D_NQ_NP_762111-MLA40003691898_122019-O.webp",
+})
+productList.push({
+    name: 'Pantalon',
+    price: 20,
+    image: "https://acdn.mitiendanube.com/stores/001/174/051/products/img_2973-0dd75e7d1203b6b6fb16982495104573-640-0.webp",
+})
+productList.push({
+    name: 'Vestido',
+    price: 25,
+    image: "https://dcdn.mitiendanube.com/stores/893/445/products/vestido-silvia-01r1-363996caff2216358916548079056851-480-0.jpg",
+})
+
+recorrerArrayDePruductos(clothesList, cardsClothes)
 
